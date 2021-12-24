@@ -96,9 +96,9 @@ stages:
               - task: AzureWebApp@1
                 inputs:
                   azureSubscription: 'AzureShineDev'
-                  appType: webAppLinux
+                  appType: 'webAppLinux'
                   appName: 'bcwebapipg'
-                  package: $(Pipeline.Workspace)\$(artifactName)\*.zip
+                  package: '$(Pipeline.Workspace)/$(artifactName)/*.zip'
               
               # - task: AzureRmWebAppDeployment@4
               #   inputs:
