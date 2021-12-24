@@ -41,6 +41,7 @@ stages:
         includeNuGetOrg: true
         noCache: false
         verbosityRestore: 'normal'
+        arguments: '-c Release'
 
     - task: DotNetCoreCLI@2
       displayName: 'Build solution'
