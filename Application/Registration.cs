@@ -3,7 +3,7 @@ using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
-namespace Shine.Backend.Application
+namespace Bcan.Backend.Application
 {
     public static class Registration
     {
