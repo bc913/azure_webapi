@@ -13,6 +13,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 
 using Bcan.Backend.Application;
+using Bcan.Backend.Persistence;
 
 namespace WebApi
 {
@@ -29,6 +30,7 @@ namespace WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddApplication();
+            services.AddPersistence();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
