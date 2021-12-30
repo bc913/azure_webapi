@@ -27,9 +27,11 @@ namespace Bcan.Backend.Application.Features.Users.Queries.GetUsers
             //var allUsers = await _userRepository.ListAsync(cancellationToken);
             var allUsers = await Task.FromResult(new List<User>()
             {
-                new User(Guid.Parse("{B0788D2F-8003-43C1-92A4-EDC76A7C5DDE}"), new FullName("Burak", " Can"),   "bc913"),
-                new User(Guid.Parse("{6313179F-7837-473A-A4D5-A5571B43E6A6}"), new FullName("Eren ", "Bekar"),  "eb926"),
-                new User(Guid.Parse("{BF3F3002-7E53-441E-8B76-F6280BE284AA}"), new FullName("Basar", " Ozkurt"), "bo916")
+                new User(Guid.NewGuid(), new FullName("Burak", " Can"),   "bc913"),
+                new User(Guid.NewGuid(), new FullName("Eren ", "Bekar"),  "eb926"),
+                new User(Guid.NewGuid(), new FullName("Basar", " Ozkurt"), "bo916"),
+                new User(Guid.NewGuid(), new FullName("Emre ", "Yuksek"),  "ey906"),
+                new User(Guid.NewGuid(), new FullName("Burco", " Tiftikci"), "bt1296")
             });
 
             return _mapper.Map<List<UserLiteDto>>(allUsers);
