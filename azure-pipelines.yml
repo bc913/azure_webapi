@@ -96,15 +96,15 @@ stages:
 
               - task: AzureWebApp@1
                 inputs:
-                  azureSubscription: 'AzureShineDev'
+                  azureSubscription: 'AzurePgApiConnection'
                   appType: 'webAppLinux'
-                  appName: 'bcwebapipg'
+                  appName: 'bcazurepg-api'
                   package: '$(Pipeline.Workspace)/$(artifactName)/*.zip'
               
               # - task: AzureRmWebAppDeployment@4
               #   inputs:
               #     ConnectionType: 'AzureRM'
-              #     azureSubscription: 'AzureShineDev'
+              #     azureSubscription: 'AzurePgApiConnection'
               #     appType: 'apiApp'
               #     WebAppName: 'ShineApp'
               #     packageForLinux: '$(Pipeline.Workspace)/$(artifactName)/*.zip'
