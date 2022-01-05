@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.6.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{DBA72308-340A-4F63-938B-FAB10392CFAF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "src\WebApi\WebApi.csproj", "{DBA72308-340A-4F63-938B-FAB10392CFAF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{3B4C9235-EE32-471C-832B-BEEFA67F5128}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "src\Core\Core.csproj", "{3B4C9235-EE32-471C-832B-BEEFA67F5128}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{94A695DC-401F-497F-B1B3-1666C3B679BC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "src\Application\Application.csproj", "{94A695DC-401F-497F-B1B3-1666C3B679BC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistence", "Persistence\Persistence.csproj", "{AA73CF3C-9F3F-458E-956B-14A3F4FA02A2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistence", "src\Persistence\Persistence.csproj", "{AA73CF3C-9F3F-458E-956B-14A3F4FA02A2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{36D6DB20-6DC8-11EC-BA5D-EF91CFF763AE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -72,5 +74,11 @@ Global
 		{AA73CF3C-9F3F-458E-956B-14A3F4FA02A2}.Release|x64.Build.0 = Release|Any CPU
 		{AA73CF3C-9F3F-458E-956B-14A3F4FA02A2}.Release|x86.ActiveCfg = Release|Any CPU
 		{AA73CF3C-9F3F-458E-956B-14A3F4FA02A2}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DBA72308-340A-4F63-938B-FAB10392CFAF} = {36D6DB20-6DC8-11EC-BA5D-EF91CFF763AE}
+		{AA73CF3C-9F3F-458E-956B-14A3F4FA02A2} = {36D6DB20-6DC8-11EC-BA5D-EF91CFF763AE}
+		{3B4C9235-EE32-471C-832B-BEEFA67F5128} = {36D6DB20-6DC8-11EC-BA5D-EF91CFF763AE}
+		{94A695DC-401F-497F-B1B3-1666C3B679BC} = {36D6DB20-6DC8-11EC-BA5D-EF91CFF763AE}
 	EndGlobalSection
 EndGlobal
