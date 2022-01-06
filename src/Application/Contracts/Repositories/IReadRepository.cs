@@ -7,6 +7,6 @@ namespace Bcan.Backend.Application.Contracts.Repositories
 {
     public interface IReadRepository<T> where T : class, IAggregateRoot
     {
-        Task<List<T>> ListAsync(CancellationToken cancellationToken);
+        Task<IReadOnlyCollection<T>> ListAsync(CancellationToken cancellationToken);
     }
 }
