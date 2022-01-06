@@ -1,6 +1,5 @@
 using AutoMapper;
 using Bcan.Backend.Core.Entities;
-using Bcan.Backend.Core.ValueObjects;
 using Bcan.Backend.Application.Contracts.Repositories;
 using MediatR;
 using System;
