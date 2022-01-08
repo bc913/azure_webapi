@@ -46,7 +46,7 @@ namespace WebApi
             options => { Configuration.Bind("AzureAdB2C", options); });
 
             services.AddApplication();
-            services.AddPersistence();
+            services.AddPersistence(Configuration);
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
