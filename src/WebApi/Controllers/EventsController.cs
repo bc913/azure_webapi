@@ -1,16 +1,12 @@
+using Bcan.Backend.Application.Features.Events.Queries.GetEvents;
+using Bcan.Backend.Application.Features.Events.Commands.CreateEvent;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity.Web.Resource;
-using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-
-using Bcan.Backend.Application.Features.Events.Queries.GetEvents;
-using Microsoft.AspNetCore.Authorization;
-
 namespace Bcan.Backend.WebApi.Controllers
 {
-
     [Authorize]
     [ApiController]
     [Route("api/[controller]")]
@@ -29,6 +25,13 @@ namespace Bcan.Backend.WebApi.Controllers
         {
             var result = await _mediator.Send(new GetEventsQuery());
             return Ok(result);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create([FromBody] CreateEventCommand createEventCommand)
+        {
+            var id = await _mediator.Send(createEventCommand);
+            return Ok(id);
         }
     }
 }
