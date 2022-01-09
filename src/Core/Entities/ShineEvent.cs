@@ -18,6 +18,8 @@ namespace Bcan.Backend.Core.Entities
 
     public class ShineEvent : BaseEntity<Guid>, IAggregateRootWithId<Guid>
     {
+
+        private ShineEvent() : base(Guid.NewGuid()){}
         public ShineEvent(Guid id, string title, ShineEventType eventType) : base(id)
         {
             Title = Guard.Against.NullOrWhiteSpace(title, nameof(title));

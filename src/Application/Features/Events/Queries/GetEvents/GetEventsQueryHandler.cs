@@ -23,13 +23,13 @@ namespace Bcan.Backend.Application.Features.Events.Queries.GetEvents
 
         public async Task<IReadOnlyCollection<ShineEventLiteDto>> Handle(GetEventsQuery request, CancellationToken cancellationToken)
         {
-            // var allEvents = await _repository.ListAsync(cancellationToken);
-            var allEvents = await Task.FromResult(new List<ShineEvent>()
-            {
-                new ShineEvent(Guid.NewGuid(), "Seviche Socials", ShineEventType.Social),
-                new ShineEvent(Guid.NewGuid(), "Absolute Ballroom", ShineEventType.Festival),
-                new ShineEvent(Guid.NewGuid(), "Beginner - Salsa", ShineEventType.Class)
-            });
+            var allEvents = await _repository.ListAsync(cancellationToken);
+            // var allEvents = await Task.FromResult(new List<ShineEvent>()
+            // {
+            //     new ShineEvent(Guid.NewGuid(), "Seviche Socials", ShineEventType.Social),
+            //     new ShineEvent(Guid.NewGuid(), "Absolute Ballroom", ShineEventType.Festival),
+            //     new ShineEvent(Guid.NewGuid(), "Beginner - Salsa", ShineEventType.Class)
+            // });
 
             return _mapper.Map<IReadOnlyCollection<ShineEventLiteDto>>(allEvents);
         }
