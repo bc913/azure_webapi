@@ -15,7 +15,7 @@ namespace Bcan.Backend.Application.Features.Events.Commands.CreateEvent
             CreateMap<CreateEventCommand, ShineEvent>()
                 .ForMember(entity => entity.Id, options => options.MapFrom(command => Guid.NewGuid()))
                 .ForMember(entity => entity.Title, options => options.MapFrom(command => command.Title))
-                .ForMember(entity => entity.Type, options => options.MapFrom(command => ShineEvent.ConvertTypeFromString(command.EventType)));
+                .ForMember(entity => entity.Type, options => options.MapFrom(command => (ShineEventType)Enum.Parse(typeof(ShineEvent), command.EventType)));
         }
     }
 }
