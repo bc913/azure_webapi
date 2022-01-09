@@ -1,12 +1,8 @@
 using Bcan.Backend.Core.Entities;
-using Bcan.Backend.Persistence.Contexts;
 using Bcan.Backend.Persistence.Repositories;
 using FluentAssertions;
-using FluentAssertions.Execution;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 using TestHelpers.Assert;
 using Xunit;
