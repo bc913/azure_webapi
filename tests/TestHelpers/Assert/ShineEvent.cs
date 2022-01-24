@@ -3,7 +3,7 @@ using FluentAssertions;
 using FluentAssertions.Execution;
 using FluentAssertions.Primitives;
 
-namespace TestHelpers.Assert
+namespace Bcan.Backend.TestHelpers.Assert
 {
     public class ShineEventAssertions : ReferenceTypeAssertions<ShineEvent, ShineEventAssertions>
     {
@@ -23,6 +23,8 @@ namespace TestHelpers.Assert
                 Subject.Id.Should().Be(expected.Id);
                 Subject.Title.Should().Be(expected.Title);
                 Subject.Type.Should().Be(expected.Type);
+                Subject.Location.Should().Be(expected.Location);
+                Subject.Media.Should().Be(expected.Media);
             }
 
             return new AndConstraint<ShineEventAssertions>(this);

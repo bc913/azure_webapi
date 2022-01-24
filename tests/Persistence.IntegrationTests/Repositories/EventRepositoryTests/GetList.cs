@@ -4,7 +4,8 @@ using FluentAssertions;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using TestHelpers.Assert;
+using Bcan.Backend.TestHelpers.Assert;
+using Bcan.Backend.TestHelpers.FakeGenerators;
 using Xunit;
 
 namespace Bcan.Backend.Persistence.IntegrationTests.Repositories.EventRepositoryTests
@@ -31,7 +32,7 @@ namespace Bcan.Backend.Persistence.IntegrationTests.Repositories.EventRepository
 
         private async Task<ShineEvent> AddAsync()
         {
-            var eventToAdd = new ShineEvent(Guid.NewGuid(), "Some title", ShineEventType.Social);
+            var eventToAdd = new ShineEvent(Guid.NewGuid(), "Some title", ShineEventType.Social, FakeLocation.Instance);
             await _sut.AddAsync(eventToAdd);
             return eventToAdd;
         }

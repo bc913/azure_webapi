@@ -16,7 +16,7 @@ namespace Bcan.Backend.Persistence.Configurations
             var eventTypeConverter = new ValueConverter<ShineEventType, string>
             (
                 v => v.ToString(),
-                v => (ShineEventType)Enum.Parse(typeof(ShineEvent), v)
+                v => (ShineEventType)Enum.Parse(typeof(ShineEventType), v)
             );
             builder.Property(e => e.Type).HasConversion(eventTypeConverter);
         }

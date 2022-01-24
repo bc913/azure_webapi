@@ -1,9 +1,11 @@
+using Bcan.Backend.Application.Features.Events.Queries.GetEvents;
+using Bcan.Backend.Core.Entities;
+using Bcan.Backend.TestHelpers.FakeGenerators;
 using System;
 using AutoMapper;
 using Xunit;
 using FluentAssertions;
-using Bcan.Backend.Application.Features.Events.Queries.GetEvents;
-using Bcan.Backend.Core.Entities;
+
 
 namespace Bcan.Backend.Application.UnitTests.Features.Events.Queries.GetEvents
 {
@@ -26,7 +28,7 @@ namespace Bcan.Backend.Application.UnitTests.Features.Events.Queries.GetEvents
         public void MappingFromEntityToDtoShouldSucceed()
         {
             //Given
-            var theEvent = new ShineEvent(Guid.NewGuid(), "Pittsburgh Socials", ShineEventType.Class);
+            var theEvent = new ShineEvent(Guid.NewGuid(), "Pittsburgh Socials", ShineEventType.Class, FakeLocation.Instance);
             var config = new MapperConfiguration(cfg => cfg.AddProfile<ShineEventLiteProfile>());
             var mapper = config.CreateMapper();
             //When

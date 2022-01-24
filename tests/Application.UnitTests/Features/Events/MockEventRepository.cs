@@ -1,5 +1,6 @@
 using Bcan.Backend.Application.Contracts.Repositories;
 using Bcan.Backend.Core.Entities;
+using Bcan.Backend.TestHelpers.FakeGenerators;
 using Moq;
 using System;
 using System.Collections.Generic;
@@ -17,10 +18,10 @@ namespace Bcan.Backend.Application.UnitTests.Features.Events
 
             var events = new List<ShineEvent>
             {
-                new ShineEvent(event_1_Guid, "Pittsburgh Socials",          ShineEventType.Social),
-                new ShineEvent(event_2_Guid, "Depo Dans Bachata Level 1",   ShineEventType.Class),
-                new ShineEvent(event_3_Guid, "DC Bachata Festival",         ShineEventType.Festival),
-                new ShineEvent(event_4_Guid, "NYC Latin Workshop",          ShineEventType.Workshop)
+                new ShineEvent(event_1_Guid, "Pittsburgh Socials",          ShineEventType.Social,    FakeLocation.Instance  ),
+                new ShineEvent(event_2_Guid, "Depo Dans Bachata Level 1",   ShineEventType.Class,     FakeLocation.Instance  ),
+                new ShineEvent(event_3_Guid, "DC Bachata Festival",         ShineEventType.Festival,  FakeLocation.Instance  ),
+                new ShineEvent(event_4_Guid, "NYC Latin Workshop",          ShineEventType.Workshop,  FakeLocation.Instance  )
             };
 
             var mockRepo = new Mock<IReadRepository<ShineEvent>>();
