@@ -8,7 +8,7 @@ namespace Bcan.Backend.Core.ValueObjects
     {
         private Fee() {}
         
-        public Fee(IReadOnlyCollection<FeeOption> options, string description)
+        public Fee(IReadOnlyCollection<FeeOption> options, string description = null)
         {
             Options = (IReadOnlyCollection<FeeOption>)Guard.Against.NullOrEmpty<FeeOption>(options, nameof(options));
             Description = description;
@@ -17,22 +17,22 @@ namespace Bcan.Backend.Core.ValueObjects
         public IReadOnlyCollection<FeeOption> Options { get; private set; }
         public string Description                     { get; private set; }
 
-        public static Fee FreeForStudents(string description = "")
+        public static Fee FreeForStudents(string description = null)
         {
             return new Fee(new List<FeeOption> { FeeOption.FreeForStudents() }, description);
         }
 
-        public static Fee FreeForAll(string description = "")
+        public static Fee FreeForAll(string description = null)
         {
             return new Fee(new List<FeeOption> { FeeOption.FreeForAll() }, description);
         }
 
-        public static Fee RegularAndStudentWithDiscountForOneTimePayment(decimal baseValue, float discountPercentage, string description = "")
+        public static Fee RegularAndStudentWithDiscountForOneTimePayment(decimal baseValue, float discountPercentage, string description = null)
         {
             return new Fee(FeeOption.RegularAndStudentWithDiscountForOneTimePayment(baseValue, discountPercentage), description);
         }
 
-        public static Fee SameForAllWithSinglePayment(decimal value, string description = "")
+        public static Fee SameForAllWithSinglePayment(decimal value, string description = null)
         {
             return new Fee(new List<FeeOption> { FeeOption.SameForAllWithSinglePayment(value) }, description);
         }

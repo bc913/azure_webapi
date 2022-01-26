@@ -25,27 +25,27 @@ namespace Bcan.Backend.Core.ValueObjects
             return new EventPolicy();
         }
 
-        public static EventPolicy DressCodeRequired(string description = "")
+        public static EventPolicy DressCodeRequired(string description = null)
         {
             return new EventPolicy(true, false, false, description);
         }
 
-        public static EventPolicy PartnerRequired(string description = "")
+        public static EventPolicy PartnerRequired(string description = null)
         {
             return new EventPolicy(false, true, false, description);
         }
 
-        public static EventPolicy DressCodeAndDanceShoesRequired(string description = "")
+        public static EventPolicy DressCodeAndDanceShoesRequired(string description = null)
         {
             return new EventPolicy(true, false, true, description);
         }
 
-        public static EventPolicy DressCodeAndPartnerRequired(string description = "")
+        public static EventPolicy DressCodeAndPartnerRequired(string description = null)
         {
             return new EventPolicy(true, true, false, description);
         }
 
-        public static EventPolicy AllRequired(string description = "")
+        public static EventPolicy AllRequired(string description = null)
         {
             return new EventPolicy(true, true, true, description);
         }

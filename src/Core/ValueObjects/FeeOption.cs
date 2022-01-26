@@ -9,7 +9,7 @@ namespace Bcan.Backend.Core.ValueObjects
     {
         private FeeOption() {}
 
-        public FeeOption(decimal value, IndividualType individual, PaymentType payment, string description = "")
+        public FeeOption(decimal value, IndividualType individual, PaymentType payment, string description = null)
         {
             if(individual == IndividualType.Undefined)
                 throw new ArgumentException("FeeOption requires a valid IndividualType other than Undefined.", nameof(individual));
@@ -20,6 +20,7 @@ namespace Bcan.Backend.Core.ValueObjects
             Value = Guard.Against.Negative(value, nameof(value), "Fee option value argument should have a non-negative value.");
             Individual = individual;
             Payment = payment;
+            Description = description;
         }
 
         public decimal Value                { get; private set; }
@@ -27,12 +28,12 @@ namespace Bcan.Backend.Core.ValueObjects
         public PaymentType Payment          { get; private set; }
         public string Description           { get; private set; }
 
-        public static FeeOption FreeForStudents(string description = "")
+        public static FeeOption FreeForStudents(string description = null)
         {
             return new FeeOption(decimal.Zero, IndividualType.Student, PaymentType.NoPayment, description);
         }
 
-        public static FeeOption FreeForAll(string description = "")
+        public static FeeOption FreeForAll(string description = null)
         {
             return new FeeOption(decimal.Zero, IndividualType.All, PaymentType.NoPayment, description);
         }
@@ -52,7 +53,7 @@ namespace Bcan.Backend.Core.ValueObjects
             };
         }
 
-        public static FeeOption SameForAllWithSinglePayment(decimal value, string description = "")
+        public static FeeOption SameForAllWithSinglePayment(decimal value, string description = null)
         {
             return new FeeOption(value, IndividualType.All, PaymentType.OneTime, description);
         }        
