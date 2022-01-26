@@ -24,12 +24,14 @@ namespace Bcan.Backend.Core
         Undefined,
         Regular,
         Student,
-        Veteran
+        Veteran,
+        All
     }
 
     public enum PaymentType
     {
         Undefined,
+        NoPayment,
         OneTime,
         Financed
     }
