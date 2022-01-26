@@ -7,7 +7,7 @@ namespace Bcan.Backend.Core.ValueObjects
 {
     public class FeeOption : ValueObject
     {
-        public FeeOption() {}
+        private FeeOption() {}
 
         public FeeOption(decimal value, IndividualType individual, PaymentType payment, string description = "")
         {
@@ -26,6 +26,36 @@ namespace Bcan.Backend.Core.ValueObjects
         public IndividualType Individual    { get; private set; }
         public PaymentType Payment          { get; private set; }
         public string Description           { get; private set; }
+
+        public static FeeOption FreeForStudents(string description = "")
+        {
+            return new FeeOption(decimal.Zero, IndividualType.Student, PaymentType.NoPayment, description);
+        }
+
+        public static FeeOption FreeForAll(string description = "")
+        {
+            return new FeeOption(decimal.Zero, IndividualType.All, PaymentType.NoPayment, description);
+        }
+
+        public static IReadOnlyCollection<FeeOption> RegularAndStudentWithDiscountForOneTimePayment(decimal baseValue, float discountPercantage)
+        {
+            Guard.Against.OutOfRange<float>(discountPercantage, nameof(discountPercantage), 0.0f, 100.0f);
+
+            decimal discountMultiplier = (decimal)(discountPercantage / 100.0f);
+            var discountAmount = decimal.Multiply(baseValue, discountMultiplier);
+            var discountedFee = decimal.Subtract(baseValue, discountAmount);
+
+            return new List<FeeOption>
+            {
+                new FeeOption(baseValue, IndividualType.Regular, PaymentType.OneTime),
+                new FeeOption(discountedFee, IndividualType.Student, PaymentType.OneTime)
+            };
+        }
+
+        public static FeeOption SameForAllWithSinglePayment(decimal value, string description = "")
+        {
+            return new FeeOption(value, IndividualType.All, PaymentType.OneTime, description);
+        }        
 
         protected override IEnumerable<object> GetEqualityComponents()
         {
