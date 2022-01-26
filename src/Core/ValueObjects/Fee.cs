@@ -39,7 +39,8 @@ namespace Bcan.Backend.Core.ValueObjects
 
         protected override IEnumerable<object> GetEqualityComponents()
         {
-            yield return Options;
+            foreach (var o in Options)
+                yield return o;
         }
     }
 }
