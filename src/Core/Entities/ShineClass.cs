@@ -11,12 +11,12 @@ namespace Bcan.Backend.Core.Entities
     {
         private ShineClass() : base(Guid.NewGuid()) { }
 
-        public ShineClass(Guid id, string title, Level danceLevel, IReadOnlyCollection<DanceType> danceTypes,
+        public ShineClass(Guid id, string title, DanceInfo info, IReadOnlyCollection<DanceType> danceTypes,
         Location location, DateTimeOffsetRange time, EventPolicy policy,
         Fee fee, string description, Media media = null) : base(id)
         {
             Title = Guard.Against.NullOrWhiteSpace(title, nameof(title), "Dance class should have a title.");
-            DanceLevel = danceLevel;
+            Info = Guard.Against.Null<DanceInfo>(info, nameof(info), "DanceInfo instance can not be null for a dance class.");
             DanceTypes = (IReadOnlyCollection<DanceType>)Guard.Against.NullOrEmpty<DanceType>(danceTypes, nameof(danceTypes), "Thought dance types should be defined for a dance class");
             Location = Guard.Against.Null<Location>(location, nameof(location), "Location should be defined for a dance class.");
             Time = Guard.Against.Null<DateTimeOffsetRange>(time, nameof(time), "Class should have start and end time defined.");
@@ -28,7 +28,7 @@ namespace Bcan.Backend.Core.Entities
 
         public string Title { get; private set; }
         public ShineEventType Type { get; private set; } = ShineEventType.Class;
-        public Level DanceLevel { get; private set; }
+        public DanceInfo Info { get; private set; }
         public IReadOnlyCollection<DanceType> DanceTypes { get; private set; }
 
         public Location Location { get; private set; }
