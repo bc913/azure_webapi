@@ -12,7 +12,7 @@ namespace Bcan.Backend.Core.Entities
 
         public ShineClass(Guid id, string title, DanceInfo info,
         Location location, DateTimeOffsetRange time, EventPolicy policy,
-        Fee fee, string description, Media media = null) : base(id)
+        Fee fee, string description = null, Media media = null) : base(id)
         {
             Title = Guard.Against.NullOrWhiteSpace(title, nameof(title), "Dance class should have a title.");
             Info = Guard.Against.Null<DanceInfo>(info, nameof(info), "DanceInfo instance can not be null for a dance class.");
