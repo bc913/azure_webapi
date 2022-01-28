@@ -9,14 +9,14 @@ namespace Bcan.Backend.Core
         private DanceType(int id, string name) : base(id, name) { }
     }
 
-    public class Level : Enumeration
+    public class DanceLevel : Enumeration
     {
-        public static Level Beginner = new(1, nameof(Beginner));
-        public static Level Intermediate = new(2, nameof(Intermediate));
-        public static Level Advanced = new(3, nameof(Advanced));
-        public static Level AllLevels = new(4, "All Levels");
+        public static DanceLevel Beginner = new(1, nameof(Beginner));
+        public static DanceLevel Intermediate = new(2, nameof(Intermediate));
+        public static DanceLevel Advanced = new(3, nameof(Advanced));
+        public static DanceLevel All = new(4, nameof(All));
 
-        private Level(int id, string name) : base(id, name){}
+        private DanceLevel(int id, string name) : base(id, name){}
     }
 
     public enum IndividualType
