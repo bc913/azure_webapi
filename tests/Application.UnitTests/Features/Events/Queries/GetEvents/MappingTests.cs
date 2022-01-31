@@ -6,7 +6,6 @@ using AutoMapper;
 using Xunit;
 using FluentAssertions;
 
-
 namespace Bcan.Backend.Application.UnitTests.Features.Events.Queries.GetEvents
 {
     public class MappingTests
