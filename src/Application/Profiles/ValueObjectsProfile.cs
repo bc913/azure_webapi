@@ -62,11 +62,4 @@ namespace Bcan.Backend.Application.Profiles
             CreateMap<Address, AddressDto>().ReverseMap();
         }
     }
-
-    public class ValueObjectsProfile : Profile
-    {
-        public ValueObjectsProfile()
-        {
-        }
-    }
 }
