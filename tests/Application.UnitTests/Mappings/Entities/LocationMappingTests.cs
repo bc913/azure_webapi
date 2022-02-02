@@ -119,6 +119,7 @@ namespace Bcan.Backend.Application.UnitTests.Mappings.Entities
                 options.ComparingByMembers<Location>()
                     .ComparingByMembers<Address>()
                     .ExcludingMissingMembers()); // Only include the members both classes have
+                    // Location(expectation) class instance has some properties that subject does not have so ignore them 
         }
     }
 }
