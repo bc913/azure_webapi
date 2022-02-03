@@ -69,51 +69,11 @@ namespace Bcan.Backend.Application.UnitTests.Features.Classes.Commands.Create
             // When
             var entity = _mapper.Map<ShineClass>(command);
             // Then
+            // TODO: Use WithMapping to compare dto.Start and dto.End with entity.Time.Start and entity.Time.End
             entity.Should().NotBeNull();
             entity.Should().BeEquivalentTo<CreateClassCommand>(command, 
                 options => options.ExcludingMissingMembers() // Expectation (command) instance has some properties that subject instance does not have so ignore
             );
         }
-
-        // [Fact]
-        // public void MappingFromDtoShouldFailForNullTitle()
-        // {
-        //     // Given
-        //     var command = new CreateClassCommand
-        //     {
-        //         Info = _info,
-        //         Location = FakeLocationDto.Instance,
-        //         Start = new DateTimeOffset(DateTime.UtcNow).AddDays(12),
-        //         End = new DateTimeOffset(DateTime.UtcNow).AddDays(13),
-        //         Fee = _fee,
-        //         Policy = _policy,
-        //         Description = "Some class description here"
-        //     };
-        //     // When
-        //     Action act = () => _mapper.Map<ShineClass>(command);
-        //     // Then
-        //     act.Should().Throw<Exception>();
-        // }
-
-        // [Fact]
-        // public void MappingFromDtoShouldFailForEmptyTitle()
-        // {
-        //     // Given
-        //     var command = new CreateClassCommand
-        //     {
-        //         Title = string.Empty,
-        //         Info = _info,
-        //         Location = FakeLocationDto.Instance,
-        //         Start = new DateTimeOffset(DateTime.UtcNow).AddDays(12),
-        //         End = new DateTimeOffset(DateTime.UtcNow).AddDays(13),
-        //         Fee = _fee,
-        //         Policy = _policy,
-        //         Description = "Some class description here"
-        //     };
-        //     // When
-        //     Action act = () => _mapper.Map<ShineClass>(command);
-        //     // Then
-        //     act.Should().Throw<Exception>();
-        // }
     }
 }
