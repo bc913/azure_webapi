@@ -10,3 +10,7 @@
 - https://andrewlock.net/should-you-unit-test-controllers-in-aspnetcore/
 
 - https://procodeguide.com/programming/unit-testing-in-aspnet-core/
+
+# Automapper mocking
+- https://rical.blogspot.com/2012/06/mocking-automapper-in-unit-testing.html
+- https://stackoverflow.com/questions/36074324/how-to-mock-an-automapper-imapper-object-in-web-api-tests-with-structuremap-depe
