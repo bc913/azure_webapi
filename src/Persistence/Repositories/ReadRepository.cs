@@ -25,5 +25,10 @@ namespace Bcan.Backend.Persistence.Repositories
         {
             return await _context.Set<T>().ToListAsync(cancellationToken);
         }
+
+        public async Task<T> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
+        {
+            return await _context.Set<T>().FindAsync(id, cancellationToken);
+        }
     }
 }
