@@ -14,3 +14,6 @@
 # Automapper mocking
 - https://rical.blogspot.com/2012/06/mocking-automapper-in-unit-testing.html
 - https://stackoverflow.com/questions/36074324/how-to-mock-an-automapper-imapper-object-in-web-api-tests-with-structuremap-depe
+
+# Moq
+- https://docs.microsoft.com/en-us/shows/visual-studio-toolbox/unit-testing-moq-framework
