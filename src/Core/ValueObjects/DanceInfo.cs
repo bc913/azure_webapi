@@ -13,6 +13,7 @@ namespace Bcan.Backend.Core.ValueObjects
             Level = level;
             Types = types;
         }
+        #region Fields - Properties
 
         private DanceLevel _level;
         public DanceLevel Level 
@@ -29,6 +30,7 @@ namespace Bcan.Backend.Core.ValueObjects
                 nameof(Types), 
                 "There should be at least one dance type for a dance info instance.");
         }
+        #endregion
 
         protected override IEnumerable<object> GetEqualityComponents()
         {

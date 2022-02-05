@@ -43,6 +43,7 @@ namespace Bcan.Backend.Core.ValueObjects
                                      : throw new ArgumentException("FeeOption requires a valid PaymentType other than Undefined.", nameof(Payment));
         }
         public string Description           { get; private set; }
+        
         #endregion
         
         public static FeeOption FreeForStudents(string description = null)

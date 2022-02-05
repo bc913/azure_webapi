@@ -14,6 +14,7 @@ namespace Bcan.Backend.Core.ValueObjects
             Description = description;
         }
 
+        #region Fields - Properties
         private IReadOnlyCollection<FeeOption> _options = new List<FeeOption>();
         public IReadOnlyCollection<FeeOption> Options 
         {
@@ -21,7 +22,8 @@ namespace Bcan.Backend.Core.ValueObjects
             private set => _options = (IReadOnlyCollection<FeeOption>)Guard.Against.NullOrEmpty<FeeOption>(value, nameof(Options));
         }
         public string Description { get; private set; }
-
+        #endregion
+        
         public static Fee FreeForStudents(string description = null)
         {
             return new Fee(new List<FeeOption> { FeeOption.FreeForStudents() }, description);

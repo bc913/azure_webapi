@@ -17,6 +17,8 @@ namespace Bcan.Backend.Core.ValueObjects
             ZipCode = zipCode;
         }
 
+        #region Fields - Properties
+
         private string _street;
         public string Street 
         {
@@ -52,6 +54,8 @@ namespace Bcan.Backend.Core.ValueObjects
             private set => _zipCode = Guard.Against.NullOrWhiteSpace(value, nameof(value));
         }
 
+        #endregion
+        
         protected override IEnumerable<object> GetEqualityComponents()
         {
             yield return Street;

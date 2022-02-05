@@ -24,6 +24,7 @@ namespace Bcan.Backend.Core.Entities
             Thumbnail = thumbnail;
         }
 
+        #region Fields - Properties
         private MediaType _type;
         public MediaType Type 
         {
@@ -41,5 +42,8 @@ namespace Bcan.Backend.Core.Entities
         }
 
         public MediaResolution Thumbnail { get; private set; }
+
+        #endregion
+
     }
 }

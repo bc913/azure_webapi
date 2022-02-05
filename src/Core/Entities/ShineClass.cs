@@ -29,6 +29,8 @@ namespace Bcan.Backend.Core.Entities
             Media = media;
         }
 
+        #region Fields - Properties
+
         public ShineEventType Type { get; private set; } = ShineEventType.Class;
 
         private string _title;
@@ -86,5 +88,7 @@ namespace Bcan.Backend.Core.Entities
             get => _media;
             private set => _media = value;
         }
+
+        #endregion
     }
 }
