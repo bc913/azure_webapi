@@ -2,6 +2,8 @@ using FluentValidation;
 using System;
 namespace Bcan.Backend.Application.Features.Classes.Commands.Create
 {
+    // This validator only concerns about the application logic so
+    // do not validate against the ShineClass invariants
     public class CreateClassCommandValidator : AbstractValidator<CreateClassCommand>
     {
         public CreateClassCommandValidator()
@@ -12,9 +14,10 @@ namespace Bcan.Backend.Application.Features.Classes.Commands.Create
                 .NotEmpty().MaximumLength(50);
 
             RuleFor(command => command.Start)
-                .NotEmpty()
-                .NotNull()
                 .GreaterThan(DateTimeOffset.UtcNow);
+
+            RuleFor(command => command.End)
+                .GreaterThan(command => command.Start); 
         }
     }
 }
