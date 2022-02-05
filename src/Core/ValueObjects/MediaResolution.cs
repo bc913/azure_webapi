@@ -11,15 +11,34 @@ namespace Bcan.Backend.Core.ValueObjects
 
         public MediaResolution(string url, int height, int width)
         {
-            Url = Guard.Against.NullOrWhiteSpace(url, nameof(url));
-            Height = Guard.Against.NegativeOrZero(height, nameof(height));
-            Width = Guard.Against.NegativeOrZero(width, nameof(width));
+            Url = url;
+            Height = height;
+            Width = width;
         }
 
-        public string Url { get; private set; }
-        public int Height { get; private set; }
-        public int Width { get; private set; }
+        #region Fields - Properties
+        private string _url;
+        public string Url 
+        {
+            get => _url;
+            private set => _url = Guard.Against.NullOrWhiteSpace(value, nameof(Url));
+        }
 
+        private int _height;
+        public int Height 
+        {
+            get => _height;
+            private set => _height = Guard.Against.NegativeOrZero(value, nameof(Height));
+        }
+
+        private int _width;
+        public int Width 
+        {
+            get => _width;
+            private set => _width = Guard.Against.NegativeOrZero(value, nameof(Width));
+        }
+        #endregion
+    
         public MediaResolution NewWithChangedResolution(int height, int width)
         {
             return new MediaResolution(this.Url, height, width);
