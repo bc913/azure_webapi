@@ -11,23 +11,40 @@ namespace Bcan.Backend.Core.ValueObjects
 
         public FeeOption(decimal value, IndividualType individual, PaymentType payment, string description = null)
         {
-            if(individual == IndividualType.Undefined)
-                throw new ArgumentException("FeeOption requires a valid IndividualType other than Undefined.", nameof(individual));
-            
-            if(payment == PaymentType.Undefined)
-                throw new ArgumentException("FeeOption requires a valid PaymentType other than Undefined.", nameof(payment));
-
-            Value = Guard.Against.Negative(value, nameof(value), "Fee option value argument should have a non-negative value.");
+            Value = value;
             Individual = individual;
             Payment = payment;
             Description = description;
         }
 
-        public decimal Value                { get; private set; }
-        public IndividualType Individual    { get; private set; }
-        public PaymentType Payment          { get; private set; }
-        public string Description           { get; private set; }
+        #region Fields - Properties
+        private decimal _value;
+        public decimal Value 
+        {
+            get => _value;
+            private set => _value = Guard.Against.Negative(value, nameof(Value), "Fee option value argument should have a non-negative value.");
+        }
 
+        private IndividualType _individual;
+        public IndividualType Individual    
+        {
+            get => _individual;
+            private set => _individual = value != IndividualType.Undefined 
+                ? value
+                : throw new ArgumentException("FeeOption requires a valid IndividualType other than Undefined.", nameof(Individual));                        
+        }
+
+        private PaymentType _payment;
+        public PaymentType Payment
+        {
+            get => _payment;
+            private set => _payment = value != PaymentType.Undefined
+                                     ? value
+                                     : throw new ArgumentException("FeeOption requires a valid PaymentType other than Undefined.", nameof(Payment));
+        }
+        public string Description           { get; private set; }
+        #endregion
+        
         public static FeeOption FreeForStudents(string description = null)
         {
             return new FeeOption(decimal.Zero, IndividualType.Student, PaymentType.NoPayment, description);
