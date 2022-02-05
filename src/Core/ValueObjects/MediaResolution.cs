@@ -1,6 +1,5 @@
 using Ardalis.GuardClauses;
 using Bcan.Backend.SharedKernel;
-using System;
 using System.Collections.Generic;
 
 namespace Bcan.Backend.Core.ValueObjects

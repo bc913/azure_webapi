@@ -75,20 +75,9 @@ namespace Bcan.Backend.Core.Entities
             private set => _fee = Guard.Against.Null<Fee>(value, nameof(Fee), "Class definition requires a fee policy to be defined.");
         }
 
-        private string _description;
-        public string Description 
-        {
-            get => _description;
-            private set => _description = value;
-        }
+        public string Description { get; private set; }
 
-        private Media _media;
-        public Media Media 
-        {
-            get => _media;
-            private set => _media = value;
-        }
-
+        public Media Media { get; private set; }
         #endregion
     }
 }
