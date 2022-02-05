@@ -10,18 +10,47 @@ namespace Bcan.Backend.Core.ValueObjects
 
         public Address(string street, string city, string state, string country, string zipCode)
         {
-            Street = Guard.Against.NullOrWhiteSpace(street, nameof(street));
-            City = Guard.Against.NullOrWhiteSpace(city, nameof(city));
-            State = Guard.Against.NullOrWhiteSpace(state, nameof(state));
-            Country = Guard.Against.NullOrWhiteSpace(country, nameof(country));
-            ZipCode = Guard.Against.NullOrWhiteSpace(zipCode, nameof(zipCode));
+            Street = street;
+            City = city;
+            State = state;
+            Country = country;
+            ZipCode = zipCode;
         }
 
-        public string Street { get; private set; }
-        public string City { get; private set; }
-        public string State { get; private set; }
-        public string Country { get; private set; }
-        public string ZipCode { get; private set; }
+        private string _street;
+        public string Street 
+        {
+            get => _street;
+            private set => _street = Guard.Against.NullOrWhiteSpace(value, nameof(Street));
+        }
+
+        private string _city;
+        public string City 
+        { 
+            get => _city;
+            private set => _city = Guard.Against.NullOrWhiteSpace(value, nameof(City));
+        }
+
+        private string _state;
+        public string State 
+        {
+            get => _state;
+            private set => _state = Guard.Against.NullOrWhiteSpace(value, nameof(value));
+        }
+
+        private string _country;
+        public string Country 
+        {
+            get => _country;
+            private set => _country = Guard.Against.NullOrWhiteSpace(value, nameof(value));
+        }
+
+        private string _zipCode;
+        public string ZipCode 
+        {
+            get => _zipCode;
+            private set => _zipCode = Guard.Against.NullOrWhiteSpace(value, nameof(value));
+        }
 
         protected override IEnumerable<object> GetEqualityComponents()
         {
