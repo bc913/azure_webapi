@@ -24,15 +24,38 @@ namespace Bcan.Backend.Core.Entities
             if(type == ShineEventType.Undefined)
                 throw new ArgumentException("A shine event should have an event type.", nameof(type));
 
-            Title = Guard.Against.NullOrWhiteSpace(title, nameof(title));
+            Title = title;
             Type = type;
-            Location = Guard.Against.Null<Location>(location, nameof(location));
+            Location = location;
             Media = media;
         }
 
-        public string Title { get; private set; }
-        public ShineEventType Type { get; private set; }
-        public Location Location { get; private set; }
-        public Media Media { get; private set; }
+        private string _title;
+        public string Title 
+        { 
+            get => _title;
+            private set => _title = Guard.Against.NullOrWhiteSpace(value, nameof(Title));
+        }
+
+        private ShineEventType _type;
+        public ShineEventType Type 
+        {
+            get => _type;
+            private set => _type = value;
+        }
+
+        private Location _location;
+        public Location Location 
+        {
+            get => _location;
+            private set => _location = Guard.Against.Null<Location>(value, nameof(Location));
+        }
+
+        private Media _media;
+        public Media Media 
+        {
+            get => _media;
+            private set => _media = value;
+        }
     }
 }
