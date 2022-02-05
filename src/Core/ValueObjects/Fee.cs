@@ -10,12 +10,17 @@ namespace Bcan.Backend.Core.ValueObjects
         
         public Fee(IReadOnlyCollection<FeeOption> options, string description = null)
         {
-            Options = (IReadOnlyCollection<FeeOption>)Guard.Against.NullOrEmpty<FeeOption>(options, nameof(options));
+            Options = options;
             Description = description;
         }
 
-        public IReadOnlyCollection<FeeOption> Options { get; private set; }
-        public string Description                     { get; private set; }
+        private IReadOnlyCollection<FeeOption> _options = new List<FeeOption>();
+        public IReadOnlyCollection<FeeOption> Options 
+        {
+            get => _options;
+            private set => _options = (IReadOnlyCollection<FeeOption>)Guard.Against.NullOrEmpty<FeeOption>(value, nameof(Options));
+        }
+        public string Description { get; private set; }
 
         public static Fee FreeForStudents(string description = null)
         {
