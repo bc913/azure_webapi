@@ -19,17 +19,26 @@ namespace Bcan.Backend.Core.Entities
         public Media(Guid id, MediaType type, MediaResolution original, MediaResolution thumbnail = null) :
             base(id)
         {
-            if(type == MediaType.Undefined)
-                throw new ArgumentException("MediaType can not be Undefined.", nameof(type));
-
             Type = type;
-            Original = Guard.Against.Null<MediaResolution>(original, nameof(original));
+            Original = original;
             Thumbnail = thumbnail;
         }
 
-        public MediaType Type { get; private set; }
+        private MediaType _type;
+        public MediaType Type 
+        {
+            get => _type;
+            private set => _type = value != MediaType.Undefined 
+                            ? value 
+                            : throw new ArgumentException("MediaType can not be Undefined.", nameof(Type));
+        }
 
-        public MediaResolution Original { get; private set; }
+        private MediaResolution _original;
+        public MediaResolution Original 
+        {
+            get => _original;
+            private set => _original = Guard.Against.Null<MediaResolution>(value, nameof(Original));
+        }
 
         public MediaResolution Thumbnail { get; private set; }
     }
