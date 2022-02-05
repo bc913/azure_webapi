@@ -12,16 +12,43 @@ namespace Bcan.Backend.Core.Entities
         public Location(Guid id, Address address, string name, double latitude, double longitude) : 
             base(id)
         {
-            Address = Guard.Against.Null<Address>(address, nameof(address));
-            Name = Guard.Against.NullOrWhiteSpace(name, nameof(name));
-            Latitude = Guard.Against.OutOfRange<double>(latitude, nameof(latitude), -90.0, 90.0);
-            Longitude = Guard.Against.OutOfRange<double>(longitude, nameof(longitude), -180.0, 180.0);
+            Address = address;
+            Name = name;
+            Latitude = latitude;
+            Longitude = longitude;
         }
 
-        public Address Address { get; private set; }
-        public string Name { get; private set; }
-        public double Latitude { get; private set; }
-        public double Longitude { get; private set; }
+        #region Fields - Properties
+
+        private Address _address;
+        public Address Address 
+        {
+            get => _address;
+            private set => _address = Guard.Against.Null<Address>(value, nameof(Address));
+        }
+
+        private string _name;
+        public string Name 
+        {
+            get => _name;
+            private set => _name = Guard.Against.NullOrWhiteSpace(value, nameof(Name));
+        }
+
+        private double _latitude;
+        public double Latitude 
+        {
+            get => _latitude;
+            private set => _latitude =  Guard.Against.OutOfRange<double>(value, nameof(Latitude), -90.0, 90.0);
+        }
+
+        private double _longitude;
+        public double Longitude 
+        {
+            get => _longitude;
+            private set => _longitude = Guard.Against.OutOfRange<double>(value, nameof(Longitude), -180.0, 180.0);
+        }
+
+        #endregion
 
         public override string ToString()
         {
