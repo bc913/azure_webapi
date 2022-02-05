@@ -1,7 +1,6 @@
 using Bcan.Backend.SharedKernel.Contracts;
 using Bcan.Backend.Application.Contracts.Repositories;
 using Bcan.Backend.Persistence.Contexts;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Threading;
 using System.Threading.Tasks;

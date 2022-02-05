@@ -1,5 +1,4 @@
 using Ardalis.GuardClauses;
-using Bcan.Backend.Core.ValueObjects;
 using Bcan.Backend.SharedKernel;
 using Bcan.Backend.SharedKernel.Contracts;
 using System;
