@@ -21,7 +21,7 @@ namespace Bcan.Backend.Core.ValueObjects
             get => _level;
             private set => _level = value;
         }
-        private IReadOnlyCollection<DanceType> _types;
+        private IReadOnlyCollection<DanceType> _types = new List<DanceType>();
         public IReadOnlyCollection<DanceType> Types 
         {
             get => _types;
