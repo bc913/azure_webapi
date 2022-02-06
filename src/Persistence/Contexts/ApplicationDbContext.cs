@@ -13,6 +13,7 @@ namespace Bcan.Backend.Persistence.Contexts
         }
 
         public DbSet<ShineEvent> Events { get; set; }
+        public DbSet<ShineClass> Classes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
