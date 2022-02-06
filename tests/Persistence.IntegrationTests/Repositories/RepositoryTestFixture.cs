@@ -6,7 +6,7 @@ using System;
 
 namespace Bcan.Backend.Persistence.IntegrationTests.Repositories
 {
-    public abstract class RepositoryTestFixture
+    public abstract class RepositoryTestFixture : IDisposable
     {
         private ApplicationDbContext _context;
 
@@ -20,6 +20,11 @@ namespace Bcan.Backend.Persistence.IntegrationTests.Repositories
         protected Repository<T> GetRepository<T>() where T : class, IAggregateRootWithId<Guid>
         {
             return new Repository<T>(_context);
+        }
+
+        public void Dispose()
+        {
+            _context.Dispose();
         }
     }
 }
