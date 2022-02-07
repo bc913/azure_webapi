@@ -13,8 +13,8 @@ namespace Bcan.Backend.TestHelpers.FakeGenerators
         private static DateTimeOffsetRange _time = DateTimeOffsetRange.CreateOneDayRange(DateTimeOffset.UtcNow);
         private static EventPolicy _policy = EventPolicy.DressCodeAndDanceShoesRequired();
         private static Fee _fee = Fee.RegularAndStudentWithDiscountForOneTimePayment(100.0m, 35.0f);
-
+        private static Media _media = new Media(Guid.NewGuid(), MediaType.Image, new MediaResolution("originalUrl", 456, 678), new MediaResolution("ThumbnailUrl", 34, 56));
         public static ShineClass Instance => new ShineClass(Guid.NewGuid(), "Fake class",
-            _info, FakeLocation.Instance, _time, _policy, _fee, "This is a fake class");
+            _info, FakeLocation.Instance, _time, _policy, _fee, "This is a fake class", _media);
     }
 }
