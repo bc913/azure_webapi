@@ -9,5 +9,7 @@ namespace Bcan.Backend.Application.Contracts.Repositories
     {
         // return id or newly created entity
         Task<Guid> AddAsync(T entity, CancellationToken cancellationToken = default);
+
+        Task DeleteAsync(T entity, CancellationToken cancellationToken = default);
     }
 }

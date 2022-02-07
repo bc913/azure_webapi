@@ -5,7 +5,6 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-
 namespace Bcan.Backend.Persistence.Repositories
 {
     public class Repository<T> : ReadRepository<T>, IRepository<T> where T : class, IAggregateRootWithId<Guid>
@@ -20,6 +19,12 @@ namespace Bcan.Backend.Persistence.Repositories
             await _context.Set<T>().AddAsync(entity, cancellationToken);
             await _context.SaveChangesAsync(cancellationToken);
             return entity.Id;
+        }
+
+        public async Task DeleteAsync (T entity, CancellationToken cancellationToken = default)
+        {
+            _context.Set<T>().Remove(entity);
+            await _context.SaveChangesAsync(cancellationToken);
         }
     }
 }
