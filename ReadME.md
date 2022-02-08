@@ -17,3 +17,6 @@
 
 # Moq
 - https://docs.microsoft.com/en-us/shows/visual-studio-toolbox/unit-testing-moq-framework
+
+# Fluent Assertions
+- [Async method throwing](https://fluentassertions.com/exceptions/)
