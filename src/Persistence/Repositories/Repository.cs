@@ -1,6 +1,7 @@
 using Bcan.Backend.SharedKernel.Contracts;
 using Bcan.Backend.Application.Contracts.Repositories;
 using Bcan.Backend.Persistence.Contexts;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -24,6 +25,15 @@ namespace Bcan.Backend.Persistence.Repositories
         public async Task DeleteAsync (T entity, CancellationToken cancellationToken = default)
         {
             _context.Set<T>().Remove(entity);
+            await _context.SaveChangesAsync(cancellationToken);
+        }
+
+        public async Task UpdateAsync(T entity, CancellationToken cancellationToken = default)
+        {
+            // _context.Set<T>().Update(entity);
+            // remove the line above if you gonna keep the one below
+            _context.Entry(entity).State = EntityState.Modified;
+
             await _context.SaveChangesAsync(cancellationToken);
         }
     }
