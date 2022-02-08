@@ -37,7 +37,7 @@ namespace Bcan.Backend.Core.Entities
         public string Title
         {
             get => _title;
-            private set => _title = Guard.Against.NullOrWhiteSpace(value, nameof(Title), "Dance class should have a title.");
+            set => _title = Guard.Against.NullOrWhiteSpace(value, nameof(Title), "Dance class should have a title.");
         }
 
         private DanceInfo _info;
