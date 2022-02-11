@@ -43,7 +43,7 @@ namespace Bcan.Backend.Application.UnitTests.Features.Classes.Commands.Delete
         }
 
         [Fact]
-        public void HandlerShouldFailForNonExistingEntity()
+        public async Task HandlerShouldFailForNonExistingEntity()
         {
             // Given
             var mockRepo = new Mock<IRepository<ShineClass>>();
@@ -56,7 +56,7 @@ namespace Bcan.Backend.Application.UnitTests.Features.Classes.Commands.Delete
             // When
             Func<Task<Unit>> act = () => sut.Handle(request, default);
             // Then
-            act.Should().ThrowAsync<NotFoundException>();
+            await act.Should().ThrowAsync<NotFoundException>();
             mockRepo.Verify(getCall, Times.Once);
             mockRepo.Verify(r => r.DeleteAsync(It.IsAny<ShineClass>(), default), Times.Never);
         }
