@@ -20,3 +20,7 @@
 
 # Fluent Assertions
 - [Async method throwing](https://fluentassertions.com/exceptions/)
+
+# Auth
+- https://www.koskila.net/how-to-get-current-user-in-asp-net-core/
+- https://stackoverflow.com/questions/30701006/how-to-get-the-current-logged-in-user-id-in-asp-net-core
