@@ -25,7 +25,7 @@ namespace Bcan.Backend.Persistence.IntegrationTests.Repositories.ClassRepository
         }
 
         [Fact]
-        public void DeletingNonExistingClassShouldFail()
+        public async Task DeletingNonExistingClassShouldFail()
         {
             // Given
             var entity = FakeShineClass.Instance;
@@ -33,7 +33,7 @@ namespace Bcan.Backend.Persistence.IntegrationTests.Repositories.ClassRepository
             // When
             Func<Task> act = () => sut.DeleteAsync(entity, default);
             // Then
-            act.Should().ThrowAsync<Exception>();
+            await act.Should().ThrowAsync<Exception>();
         }
     }
 }

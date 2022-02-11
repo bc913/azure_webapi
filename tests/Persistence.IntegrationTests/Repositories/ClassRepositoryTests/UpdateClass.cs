@@ -1,7 +1,6 @@
 using Bcan.Backend.Core.Entities;
 using FluentAssertions;
 using System;
-using System.Threading;
 using System.Threading.Tasks;
 using Bcan.Backend.TestHelpers.Assert;
 using Bcan.Backend.TestHelpers.FakeGenerators;
