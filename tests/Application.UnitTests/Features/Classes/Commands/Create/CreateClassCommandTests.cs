@@ -81,7 +81,7 @@ namespace Bcan.Backend.Application.UnitTests.Features.Classes.Commands.Create
         }
 
         [Fact]
-        public void HandlerShouldFailIfTitleIsNull()
+        public async Task HandlerShouldFailIfTitleIsNull()
         {
             // Given
             _command.Title = null;
@@ -93,15 +93,15 @@ namespace Bcan.Backend.Application.UnitTests.Features.Classes.Commands.Create
             var handler = new CreateClassCommandHandler(mockRepo.Object, _mapper);
 
             // When
-            Func<Task<Guid>> act = async () => await handler.Handle(_command, CancellationToken.None);
+            Func<Task<Guid>> act = () => handler.Handle(_command, CancellationToken.None);
 
             // Then
-            act.Should().ThrowAsync<ValidationException>();
+            await act.Should().ThrowAsync<ValidationException>();
             mockRepo.Verify(successCall, Times.Never);
         }
 
         [Fact]
-        public void HandlerShouldFailIfTitleIsEmpty()
+        public async Task HandlerShouldFailIfTitleIsEmpty()
         {
             // Given
             _command.Title = string.Empty;
@@ -112,15 +112,15 @@ namespace Bcan.Backend.Application.UnitTests.Features.Classes.Commands.Create
             var handler = new CreateClassCommandHandler(mockRepo.Object, _mapper);
 
             // When
-            Func<Task<Guid>> act = async () => await handler.Handle(_command, CancellationToken.None);
+            Func<Task<Guid>> act = () => handler.Handle(_command, CancellationToken.None);
 
             // Then
-            act.Should().ThrowAsync<ValidationException>();
+            await act.Should().ThrowAsync<ValidationException>();
             mockRepo.Verify(successCall, Times.Never);
         }
 
         [Fact]
-        public void HandlerShouldFailIfTitleExceedsCharacterLimit()
+        public async Task HandlerShouldFailIfTitleExceedsCharacterLimit()
         {
             // Given
             _command.Title = "This is a very very very very long title for a dance class so do not expect this happening in real world. It is imaginary.";
@@ -131,15 +131,15 @@ namespace Bcan.Backend.Application.UnitTests.Features.Classes.Commands.Create
             var handler = new CreateClassCommandHandler(mockRepo.Object, _mapper);
 
             // When
-            Func<Task<Guid>> act = async () => await handler.Handle(_command, CancellationToken.None);
+            Func<Task<Guid>> act = () => handler.Handle(_command, CancellationToken.None);
 
             // Then
-            act.Should().ThrowAsync<ValidationException>();
+            await act.Should().ThrowAsync<ValidationException>();
             mockRepo.Verify(successCall, Times.Never);
         }
 
         [Fact]
-        public void HandlerShouldFailIfStartDateIsPast()
+        public async Task HandlerShouldFailIfStartDateIsPast()
         {
             // Given
             _command.Start = DateTimeOffset.UnixEpoch;
@@ -151,15 +151,15 @@ namespace Bcan.Backend.Application.UnitTests.Features.Classes.Commands.Create
             var handler = new CreateClassCommandHandler(mockRepo.Object, _mapper);
 
             // When
-            Func<Task<Guid>> act = async () => await handler.Handle(_command, CancellationToken.None);
+            Func<Task<Guid>> act = () => handler.Handle(_command, CancellationToken.None);
 
             // Then
-            act.Should().ThrowAsync<ValidationException>();
+            await act.Should().ThrowAsync<ValidationException>();
             mockRepo.Verify(successCall, Times.Never);
         }
 
         [Fact]
-        public void HandlerShouldFailIfEndDateIsSmallerThanStartDate()
+        public async Task HandlerShouldFailIfEndDateIsSmallerThanStartDate()
         {
             // Given
             _command.Start = new DateTimeOffset(DateTime.UtcNow).AddDays(2);
@@ -172,13 +172,11 @@ namespace Bcan.Backend.Application.UnitTests.Features.Classes.Commands.Create
             var handler = new CreateClassCommandHandler(mockRepo.Object, _mapper);
 
             // When
-            Func<Task<Guid>> act = async () => await handler.Handle(_command, CancellationToken.None);
+            Func<Task<Guid>> act = () => handler.Handle(_command, CancellationToken.None);
 
             // Then
-            act.Should().ThrowAsync<ValidationException>();
+            await act.Should().ThrowAsync<ValidationException>();
             mockRepo.Verify(successCall, Times.Never);
         }
-
-
     }
 }
