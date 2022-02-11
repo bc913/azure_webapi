@@ -77,7 +77,7 @@ namespace Bcan.Backend.Application.UnitTests.Features.Classes.Queries.ShineClass
             var request = new ShineClassDetailQuery { Id = Guid.NewGuid() };
             var sut = new ShineClassDetailQueryHandler(mockRepo.Object, _mapper);
             // When
-            Func<Task<ShineClassDetailDto>> act = async () => await sut.Handle(request, CancellationToken.None);
+            Func<Task<ShineClassDetailDto>> act = () => sut.Handle(request, CancellationToken.None);
             // Then
             await act.Should().ThrowExactlyAsync<NotFoundException>();
             mockRepo.Verify(notFoundCall, Times.AtLeastOnce);
